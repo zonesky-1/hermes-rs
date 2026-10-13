@@ -1,0 +1,16 @@
+[Unit]
+Description=Hermes Agent (Rust Edition) Gateway Service
+After=network.target
+
+[Service]
+Type=simple
+User=agentuser
+WorkingDirectory=/home/agentuser
+ExecStart=/usr/local/bin/hermes-rs --profile default --gateway
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
